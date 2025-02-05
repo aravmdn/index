@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Arav Madan, a Computer Science and Engineering student at TU Eindhoven. Passionate about problem-solving, tech innovation, and continuous learning.">
+  <meta name="author" content="Arav Madan">
+  <meta name="keywords" content="Arav Madan, Portfolio, Computer Science, TU Eindhoven, Programming, Java, Python">
+  <title>Arav Madan - Portfolio</title>
+  <style>
+    :root {
+      --primary-color: #1e1e2f;
+      --secondary-color: #64ffda;
+      --text-color-light: #ffffff;
+      --text-color-dark: #1e1e2f;
+      --bg-light: #ffffff;
+      --bg-dark: #121212;
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background: var(--bg-light);
+      color: var(--text-color-dark);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background: var(--bg-dark);
+      color: var(--text-color-light);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--primary-color);
+      color: var(--text-color-light);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-color-light);
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--secondary-color);
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5rem 1rem;
+      background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+      color: var(--text-color-light);
+    }
+
+    .hero img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .cta-buttons a {
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .cta-buttons a.primary {
+      background: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    .cta-buttons a.secondary {
+      background: transparent;
+      border: 2px solid var(--secondary-color);
+      color: var(--secondary-color);
+    }
+
+    .cta-buttons a:hover {
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 4rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .about-me p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .experience-card {
+      background: var(--primary-color);
+      padding: 1.5rem;
+      border-radius: 8px;
+      transition: transform 0.3s;
+      color: var(--text-color-light);
+    }
+
+    .experience-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-item {
+      text-align: center;
+      padding: 1rem;
+      border: 1px solid var(--secondary-color);
+      border-radius: 8px;
+      transition: background 0.3s;
+      color: var(--text-color-dark);
+    }
+
+    .skill-item:hover {
+      background: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background: var(--primary-color);
+      color: var(--text-color-light);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+  </header>
+
+  <section id="home" class="hero">
+    <img src="C:\Users\20243223\Downloads\pfp.jpg" alt="Profile Picture">
+    <h1>Aspiring Computer Scientist | Passionate About Problem-Solving & Tech Innovation</h1>
+    <p>Enthusiastic and dedicated Computer Science student at TU Eindhoven with a strong drive for continuous learning and collaboration.</p>
+    <div class="cta-buttons">
+      <a href="C:\Users\20243223\Downloads\Arav Madan (3).pdf" download class="primary">View My Resume</a>
+      <a href="#contact" class="secondary">Let's Connect</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-me">
+      <p>I am Arav Madan, a Computer Science and Engineering student at TU Eindhoven. Known for exceptional communication skills and the ability to collaborate effectively in team environments, I am passionate about solving complex problems through technology.</p>
+      <p><strong>Core Attributes:</strong> Analytical Thinker, Adaptable, Tech Enthusiast</p>
+      <p><strong>Hobbies:</strong> Volunteering, Learning New Programming Languages, Mathematics Puzzles, Coding Projects</p>
+      <p><em>Fun Fact:</em> I enjoy solving coding challenges late at night!</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="experience-grid">
+      <div class="experience-card">
+        <h3>Sales Assistant</h3>
+        <p><strong>Stradivarius</strong> | June – August 2024</p>
+        <p>Assisted customers, optimized store layout, and contributed to sales goals.</p>
+      </div>
+      <div class="experience-card">
+        <h3>Mathematics Tutor</h3>
+        <p><strong>Freelance</strong> | Feb – April 2024</p>
+        <p>Taught personalized lessons, encouraged problem-solving, and built strong student relationships.</p>
+      </div>
+      <div class="experience-card">
+        <h3>Delivery Driver</h3>
+        <p><strong>Peddler</strong> | Jan – May 2024</p>
+        <p>Managed deliveries, optimized routes, and ensured customer satisfaction.</p>
+      </div>
+      <div class="experience-card">
+        <h3>Waiter</h3>
+        <p><strong>FoodExplore</strong> | March – May 2023</p>
+        <p>Provided high-quality service, resolved customer concerns, and coordinated orders.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="experience-grid">
+      <div class="experience-card">
+        <h3>Java & Python Exercises</h3>
+        <p>Implemented various coding exercises to enhance programming skills.</p>
+      </div>
+      <div class="experience-card">
+        <h3>Web Development</h3>
+        <p>Built interactive web applications using HTML, CSS, and JavaScript.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-item">Java</div>
+      <div class="skill-item">Python</div>
+      <div class="skill-item">Analytical Thinking</div>
+      <div class="skill-item">Communication</div>
+      <div class="skill-item">Team Collaboration</div>
+      <div class="skill-item">Problem-Solving</div>
+      <div class="skill-item">Process Optimization</div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="experience-grid">
+      <div class="experience-card">
+        <h3>BSc in Computer Science & Engineering</h3>
+        <p><strong>TU Eindhoven</strong> | 2024 – Present</p>
+      </div>
+      <div class="experience-card">
+        <h3>International Baccalaureate</h3>
+        <p><strong>International School Utrecht</strong> | 2022 – 2024</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <form>
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p>Phone: +31 684457634</p>
+    <p>Email: arav.madan2205@gmail.com</p>
+    <p>Address: 73 Tongelresestraat, 5613 DB, Noord-Brabant, Netherlands</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Arav Madan. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
