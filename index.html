@@ -162,13 +162,17 @@
     }
 
     .skill-item {
-      text-align: center;
-      padding: 1rem;
-      border: 1px solid var(--secondary-color);
-      border-radius: 8px;
-      transition: background 0.3s;
-      color: var(--text-color-dark);
-    }
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s; /* Add color transition for smooth effect */
+  color: var(--text-color-dark); /* Default text color for light mode */
+}
+
+body.dark-mode .skill-item {
+  color: var(--text-color-light); /* Text color for dark mode */
+}
 
     .skill-item:hover {
       background: var(--secondary-color);
