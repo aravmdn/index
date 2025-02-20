@@ -11,7 +11,8 @@
   <style>
     :root {
       --primary-color: #1e1e2f;
-      --secondary-color: #64ffda;
+      --secondary-color: #ff6f61;
+      --accent-color: #64ffda;
       --text-color-light: #ffffff;
       --text-color-dark: #1e1e2f;
       --bg-light: #ffffff;
@@ -58,13 +59,13 @@
     }
 
     nav a:hover {
-      color: var(--secondary-color);
+      color: var(--accent-color);
     }
 
     .theme-toggle {
       cursor: pointer;
       font-size: 1.2rem;
-      color: var(--secondary-color);
+      color: var(--accent-color);
     }
 
     .hero {
@@ -119,14 +120,14 @@
     }
 
     .cta-buttons a.primary {
-      background: var(--secondary-color);
+      background: var(--accent-color);
       color: var(--primary-color);
     }
 
     .cta-buttons a.secondary {
       background: transparent;
-      border: 2px solid var(--secondary-color);
-      color: var(--secondary-color);
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
     }
 
     .cta-buttons a:hover {
@@ -137,26 +138,11 @@
       padding: 4rem 1rem;
       max-width: 1200px;
       margin: 0 auto;
-      opacity: 0;
-      animation: fadeIn 1s ease-in-out forwards;
+      display: none; /* Hide all sections by default */
     }
 
-    section:nth-of-type(1) { animation-delay: 0.2s; }
-    section:nth-of-type(2) { animation-delay: 0.4s; }
-    section:nth-of-type(3) { animation-delay: 0.6s; }
-    section:nth-of-type(4) { animation-delay: 0.8s; }
-    section:nth-of-type(5) { animation-delay: 1s; }
-    section:nth-of-type(6) { animation-delay: 1.2s; }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    section.active {
+      display: block; /* Show only the active section */
     }
 
     h2 {
@@ -197,7 +183,7 @@
     .skill-item {
       text-align: center;
       padding: 1rem;
-      border: 1px solid var(--secondary-color);
+      border: 1px solid var(--accent-color);
       border-radius: 8px;
       transition: all 0.3s ease;
       color: var(--text-color-dark);
@@ -209,7 +195,7 @@
     }
 
     .skill-item:hover {
-      background: var(--secondary-color);
+      background: var(--accent-color);
       color: var(--primary-color);
       transform: scale(1.05);
     }
@@ -248,7 +234,7 @@
       content: '';
       width: 50px;
       height: 50px;
-      border: 5px solid var(--secondary-color);
+      border: 5px solid var(--accent-color);
       border-top: 5px solid transparent;
       border-radius: 50%;
       animation: spin 1s linear infinite;
@@ -262,6 +248,24 @@
         transform: rotate(360deg);
       }
     }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent-color);
+      color: var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+    }
+
+    .back-to-top.show {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -269,29 +273,29 @@
   <header>
     <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" onclick="showSection('home')">Home</a></li>
+        <li><a href="#" onclick="showSection('about')">About Me</a></li>
+        <li><a href="#" onclick="showSection('experience')">Experience</a></li>
+        <li><a href="#" onclick="showSection('projects')">Projects</a></li>
+        <li><a href="#" onclick="showSection('skills')">Skills</a></li>
+        <li><a href="#" onclick="showSection('education')">Education</a></li>
+        <li><a href="#" onclick="showSection('contact')">Contact</a></li>
       </ul>
     </nav>
     <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
   </header>
 
-  <section id="home" class="hero" data-aos="fade-up">
+  <section id="home" class="hero active" data-aos="fade-up">
     <img src="pfp.jpg" alt="Profile Picture">
     <h1>Aspiring Computer Scientist | Passionate About Problem-Solving & Tech Innovation</h1>
     <p>Enthusiastic and dedicated Computer Science student at TU Eindhoven with a strong drive for continuous learning and collaboration.</p>
     <div class="cta-buttons">
       <a href="resume.pdf" download class="primary">View My Resume</a>
-      <a href="#contact" class="secondary">Let's Connect</a>
+      <a href="#" onclick="showSection('contact')" class="secondary">Let's Connect</a>
     </div>
   </section>
 
-  <section id="about" data-aos="fade-right">
+  <section id="about">
     <h2>About Me</h2>
     <div class="about-me">
       <p>I am Arav Madan, a Computer Science and Engineering student at TU Eindhoven. Known for exceptional communication skills and the ability to collaborate effectively in team environments, I am passionate about solving complex problems through technology.</p>
@@ -301,7 +305,7 @@
     </div>
   </section>
 
-  <section id="experience" data-aos="fade-left">
+  <section id="experience">
     <h2>Experience</h2>
     <div class="experience-grid">
       <div class="experience-card">
@@ -342,7 +346,7 @@
     </div>
   </section>
 
-  <section id="projects" data-aos="zoom-in">
+  <section id="projects">
     <h2>Projects</h2>
     <div class="experience-grid">
       <div class="experience-card">
@@ -356,7 +360,7 @@
     </div>
   </section>
 
-  <section id="skills" data-aos="fade-up">
+  <section id="skills">
     <h2>Skills</h2>
     <div class="skills-grid">
       <div class="skill-item">Java</div>
@@ -369,7 +373,7 @@
     </div>
   </section>
 
-  <section id="education" data-aos="fade-down">
+  <section id="education">
     <h2>Education</h2>
     <div class="experience-grid">
       <div class="experience-card">
@@ -383,7 +387,7 @@
     </div>
   </section>
 
-  <section id="contact" data-aos="fade-up">
+  <section id="contact">
     <h2>Contact</h2>
     <form>
       <input type="text" placeholder="Name" required>
@@ -397,8 +401,10 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 Arav Madan. All rights reserved.</p>
+    <p>&copy; 2023 Arav Madan. All rights reserved.</p>
   </footer>
+
+  <div class="back-to-top" onclick="scrollToTop()">↑ Back to Top</div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
@@ -417,6 +423,28 @@
       const loader = document.querySelector('.loader');
       loader.classList.add('hidden');
     });
+
+    // Function to show a specific section and hide others
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when switching sections
+    }
+
+    // Back to Top Button
+    window.addEventListener('scroll', () => {
+      const backToTop = document.querySelector('.back-to-top');
+      if (window.scrollY > 300) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   </script>
 </body>
 </html>
