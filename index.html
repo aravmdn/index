@@ -7,43 +7,8 @@
   <meta name="author" content="Arav Madan">
   <meta name="keywords" content="Arav Madan, Portfolio, Computer Science, TU Eindhoven, Programming, Java, Python">
   <title>Arav Madan - Portfolio</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    /* Fade-in Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Apply Animation to Sections */
-section {
-  opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards;
-}
-
-section:nth-of-type(1) {
-  animation-delay: 0.2s;
-}
-section:nth-of-type(2) {
-  animation-delay: 0.4s;
-}
-section:nth-of-type(3) {
-  animation-delay: 0.6s;
-}
-section:nth-of-type(4) {
-  animation-delay: 0.8s;
-}
-section:nth-of-type(5) {
-  animation-delay: 1s;
-}
-section:nth-of-type(6) {
-  animation-delay: 1.2s;
-}
     :root {
       --primary-color: #1e1e2f;
       --secondary-color: #64ffda;
@@ -107,6 +72,8 @@ section:nth-of-type(6) {
       padding: 5rem 1rem;
       background: linear-gradient(135deg, #1e1e2f, #2a2a40);
       color: var(--text-color-light);
+      overflow: hidden;
+      position: relative;
     }
 
     .hero img {
@@ -115,6 +82,16 @@ section:nth-of-type(6) {
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1rem;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
     .hero h1 {
@@ -160,6 +137,26 @@ section:nth-of-type(6) {
       padding: 4rem 1rem;
       max-width: 1200px;
       margin: 0 auto;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    section:nth-of-type(1) { animation-delay: 0.2s; }
+    section:nth-of-type(2) { animation-delay: 0.4s; }
+    section:nth-of-type(3) { animation-delay: 0.6s; }
+    section:nth-of-type(4) { animation-delay: 0.8s; }
+    section:nth-of-type(5) { animation-delay: 1s; }
+    section:nth-of-type(6) { animation-delay: 1.2s; }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h2 {
@@ -198,21 +195,23 @@ section:nth-of-type(6) {
     }
 
     .skill-item {
-  text-align: center;
-  padding: 1rem;
-  border: 1px solid var(--secondary-color);
-  border-radius: 8px;
-  transition: background 0.3s, color 0.3s; /* Add color transition for smooth effect */
-  color: var(--text-color-dark); /* Default text color for light mode */
-}
+      text-align: center;
+      padding: 1rem;
+      border: 1px solid var(--secondary-color);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      color: var(--text-color-dark);
+      background: transparent;
+    }
 
-body.dark-mode .skill-item {
-  color: var(--text-color-light); /* Text color for dark mode */
-}
+    body.dark-mode .skill-item {
+      color: var(--text-color-light);
+    }
 
     .skill-item:hover {
       background: var(--secondary-color);
       color: var(--primary-color);
+      transform: scale(1.05);
     }
 
     footer {
@@ -227,45 +226,46 @@ body.dark-mode .skill-item {
         font-size: 2rem;
       }
     }
-    /* Fade-in Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-/* Apply Animation to Sections */
-section {
-  opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards;
-}
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
 
-section:nth-of-type(1) {
-  animation-delay: 0.2s;
-}
-section:nth-of-type(2) {
-  animation-delay: 0.4s;
-}
-section:nth-of-type(3) {
-  animation-delay: 0.6s;
-}
-section:nth-of-type(4) {
-  animation-delay: 0.8s;
-}
-section:nth-of-type(5) {
-  animation-delay: 1s;
-}
-section:nth-of-type(6) {
-  animation-delay: 1.2s;
-}
+    .loader.hidden {
+      display: none;
+    }
+
+    .loader::after {
+      content: '';
+      width: 50px;
+      height: 50px;
+      border: 5px solid var(--secondary-color);
+      border-top: 5px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="loader"></div>
   <header>
     <nav>
       <ul>
@@ -281,17 +281,17 @@ section:nth-of-type(6) {
     <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
   </header>
 
-  <section id="home" class="hero">
+  <section id="home" class="hero" data-aos="fade-up">
     <img src="pfp.jpg" alt="Profile Picture">
     <h1>Aspiring Computer Scientist | Passionate About Problem-Solving & Tech Innovation</h1>
     <p>Enthusiastic and dedicated Computer Science student at TU Eindhoven with a strong drive for continuous learning and collaboration.</p>
     <div class="cta-buttons">
-      <a href="Arav Madan (3).pdf" download class="primary">View My Resume</a>
+      <a href="resume.pdf" download class="primary">View My Resume</a>
       <a href="#contact" class="secondary">Let's Connect</a>
     </div>
   </section>
 
-  <section id="about">
+  <section id="about" data-aos="fade-right">
     <h2>About Me</h2>
     <div class="about-me">
       <p>I am Arav Madan, a Computer Science and Engineering student at TU Eindhoven. Known for exceptional communication skills and the ability to collaborate effectively in team environments, I am passionate about solving complex problems through technology.</p>
@@ -301,48 +301,48 @@ section:nth-of-type(6) {
     </div>
   </section>
 
-  <section id="experience">
+  <section id="experience" data-aos="fade-left">
     <h2>Experience</h2>
-   <div class="experience-grid">
-  <div class="experience-card">
-    <h3>Sales Associate</h3>
-    <p><strong>Nelson Schoenen B.V.</strong> | February 2025 – Present</p>
-    <p>Guided customers in selecting the right footwear through personalized service.</p>
-    <p>Managed inventory, restocking, and store organization.</p>
-    <p>Processed transactions while ensuring a smooth shopping experience.</p>
-  </div>
-  <div class="experience-card">
-    <h3>Sales Assistant</h3>
-    <p><strong>Stradivarius</strong> | June 2024 – August 2024</p>
-    <p>Assisted customers with product selection, enhancing the shopping experience.</p>
-    <p>Maintained organized and visually appealing merchandise displays.</p>
-    <p>Supported sales targets through proactive engagement and teamwork.</p>
-  </div>
-  <div class="experience-card">
-    <h3>Mathematics Tutor</h3>
-    <p><strong>Freelance</strong> | February 2024 – April 2024</p>
-    <p>Delivered personalized lessons tailored to individual learning needs.</p>
-    <p>Encouraged critical thinking and problem-solving in mathematics.</p>
-    <p>Built strong relationships with students, earning positive feedback from parents.</p>
-  </div>
-  <div class="experience-card">
-    <h3>Delivery Driver</h3>
-    <p><strong>Peddler</strong> | January 2024 – May 2024</p>
-    <p>Completed timely deliveries while optimizing routes for efficiency.</p>
-    <p>Managed secure transactions and handled payments accurately.</p>
-    <p>Provided professional and friendly service, ensuring customer satisfaction.</p>
-  </div>
-  <div class="experience-card">
-    <h3>Waiter</h3>
-    <p><strong>FoodExplore</strong> | March 2023 – May 2023</p>
-    <p>Welcomed guests and provided attentive, high-quality service.</p>
-    <p>Resolved customer concerns promptly to maintain a positive atmosphere.</p>
-    <p>Coordinated with kitchen staff to ensure accurate and timely orders.</p>
-  </div>
-</div>
+    <div class="experience-grid">
+      <div class="experience-card">
+        <h3>Sales Associate</h3>
+        <p><strong>Nelson Schoenen B.V.</strong> | February 2025 – Present</p>
+        <p>Guided customers in selecting the right footwear through personalized service.</p>
+        <p>Managed inventory, restocking, and store organization.</p>
+        <p>Processed transactions while ensuring a smooth shopping experience.</p>
+      </div>
+      <div class="experience-card">
+        <h3>Sales Assistant</h3>
+        <p><strong>Stradivarius</strong> | June 2024 – August 2024</p>
+        <p>Assisted customers with product selection, enhancing the shopping experience.</p>
+        <p>Maintained organized and visually appealing merchandise displays.</p>
+        <p>Supported sales targets through proactive engagement and teamwork.</p>
+      </div>
+      <div class="experience-card">
+        <h3>Mathematics Tutor</h3>
+        <p><strong>Freelance</strong> | February 2024 – April 2024</p>
+        <p>Delivered personalized lessons tailored to individual learning needs.</p>
+        <p>Encouraged critical thinking and problem-solving in mathematics.</p>
+        <p>Built strong relationships with students, earning positive feedback from parents.</p>
+      </div>
+      <div class="experience-card">
+        <h3>Delivery Driver</h3>
+        <p><strong>Peddler</strong> | January 2024 – May 2024</p>
+        <p>Completed timely deliveries while optimizing routes for efficiency.</p>
+        <p>Managed secure transactions and handled payments accurately.</p>
+        <p>Provided professional and friendly service, ensuring customer satisfaction.</p>
+      </div>
+      <div class="experience-card">
+        <h3>Waiter</h3>
+        <p><strong>FoodExplore</strong> | March 2023 – May 2023</p>
+        <p>Welcomed guests and provided attentive, high-quality service.</p>
+        <p>Resolved customer concerns promptly to maintain a positive atmosphere.</p>
+        <p>Coordinated with kitchen staff to ensure accurate and timely orders.</p>
+      </div>
+    </div>
   </section>
 
-  <section id="projects">
+  <section id="projects" data-aos="zoom-in">
     <h2>Projects</h2>
     <div class="experience-grid">
       <div class="experience-card">
@@ -356,7 +356,7 @@ section:nth-of-type(6) {
     </div>
   </section>
 
-  <section id="skills">
+  <section id="skills" data-aos="fade-up">
     <h2>Skills</h2>
     <div class="skills-grid">
       <div class="skill-item">Java</div>
@@ -369,21 +369,21 @@ section:nth-of-type(6) {
     </div>
   </section>
 
-  <section id="education">
+  <section id="education" data-aos="fade-down">
     <h2>Education</h2>
     <div class="experience-grid">
       <div class="experience-card">
         <h3>BSc in Computer Science & Engineering</h3>
-        <p><strong>TU Eindhoven</strong> | 2024 – Present</p>
+        <p><strong>Eindhoven University of Technology, Netherlands</strong> | 2024 – Present</p>
       </div>
       <div class="experience-card">
         <h3>International Baccalaureate</h3>
-        <p><strong>International School Utrecht</strong> | 2022 – 2024</p>
+        <p><strong>International School Utrecht, Netherlands</strong> | 2022 – 2024</p>
       </div>
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" data-aos="fade-up">
     <h2>Contact</h2>
     <form>
       <input type="text" placeholder="Name" required>
@@ -393,17 +393,30 @@ section:nth-of-type(6) {
     </form>
     <p>Phone: +31 684457634</p>
     <p>Email: arav.madan2205@gmail.com</p>
-    <p>Address: 73 Tongelresestraat, 5613 DB, Noord-Brabant, Netherlands</p>
+    <p>Address: 73 Tongelresestraat, 5613 DB Noord-Brabant, Netherlands</p>
   </section>
 
   <footer>
-    <p>&copy; 2023 Arav Madan. All rights reserved.</p>
+    <p>&copy; 2025 Arav Madan. All rights reserved.</p>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    });
+
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
     }
+
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      loader.classList.add('hidden');
+    });
   </script>
 </body>
 </html>
