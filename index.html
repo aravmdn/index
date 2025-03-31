@@ -10,11 +10,11 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #1e1e2f;
-      --secondary-color: #ff6f61;
-      --accent-color: #64ffda;
+      --primary-color: #000000;
+      --secondary-color: #ffffff;
+      --accent-color: #ff6f61;
       --text-color-light: #ffffff;
-      --text-color-dark: #1e1e2f;
+      --text-color-dark: #000000;
       --bg-light: #ffffff;
       --bg-dark: #121212;
       --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -26,6 +26,9 @@
       background: var(--bg-light);
       color: var(--text-color-dark);
       transition: background 0.3s, color 0.3s;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     body.dark-mode {
@@ -71,7 +74,7 @@
     .hero {
       text-align: center;
       padding: 5rem 1rem;
-      background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+      background: linear-gradient(135deg, #000000, #2a2a40);
       color: var(--text-color-light);
       overflow: hidden;
       position: relative;
@@ -202,9 +205,10 @@
 
     footer {
       text-align: center;
-      padding: 2rem 0;
+      padding: 1rem 0;
       background: var(--primary-color);
       color: var(--text-color-light);
+      margin-top: auto;
     }
 
     @media (max-width: 768px) {
@@ -301,7 +305,6 @@
       <p>I am Arav Madan, a Computer Science and Engineering student at TU Eindhoven. Known for exceptional communication skills and the ability to collaborate effectively in team environments, I am passionate about solving complex problems through technology.</p>
       <p><strong>Core Attributes:</strong> Analytical Thinker, Adaptable, Tech Enthusiast</p>
       <p><strong>Hobbies:</strong> Volunteering, Learning New Programming Languages, Mathematics Puzzles, Coding Projects</p>
-      <p><em>Fun Fact:</em> I enjoy solving coding challenges late at night!</p>
     </div>
   </section>
 
