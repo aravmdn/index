@@ -141,66 +141,20 @@
       padding: 4rem 1rem;
       max-width: 1200px;
       margin: 0 auto;
-      display: none; /* Hide all sections by default */
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     section.active {
-      display: block; /* Show only the active section */
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h2 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
       text-align: center;
-    }
-
-    .about-me p {
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-
-    .experience-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .experience-card {
-      background: var(--primary-color);
-      padding: 1.5rem;
-      border-radius: 8px;
-      transition: transform 0.3s;
-      color: var(--text-color-light);
-    }
-
-    .experience-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-    }
-
-    .skill-item {
-      text-align: center;
-      padding: 1rem;
-      border: 1px solid var(--accent-color);
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      color: var(--text-color-dark);
-      background: transparent;
-    }
-
-    body.dark-mode .skill-item {
-      color: var(--text-color-light);
-    }
-
-    .skill-item:hover {
-      background: var(--accent-color);
-      color: var(--primary-color);
-      transform: scale(1.05);
     }
 
     footer {
@@ -211,46 +165,44 @@
       margin-top: auto;
     }
 
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
+    /* Tree Diagram for Skills */
+    .tree-diagram {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
     }
 
-    .loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-light);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
+    .tree-node {
+      background: var(--primary-color);
+      color: var(--text-color-light);
+      padding: 1.5rem;
+      border-radius: 8px;
+      position: relative;
+      transition: transform 0.3s;
     }
 
-    .loader.hidden {
-      display: none;
+    .tree-node:hover {
+      transform: scale(1.05);
     }
 
-    .loader::after {
+    .tree-node::before {
       content: '';
-      width: 50px;
-      height: 50px;
-      border: 5px solid var(--accent-color);
-      border-top: 5px solid transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      width: 2px;
+      height: 10px;
+      background: var(--accent-color);
     }
 
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+    .tree-node h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tree-node p {
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
 
     /* Back to Top Button */
@@ -273,7 +225,6 @@
   </style>
 </head>
 <body>
-  <div class="loader"></div>
   <header>
     <nav>
       <ul>
@@ -289,7 +240,7 @@
     <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
   </header>
 
-  <section id="home" class="hero active" data-aos="fade-up">
+  <section id="home" class="hero active">
     <img src="pfp.jpg" alt="Profile Picture">
     <h1>Aspiring Computer Scientist | Passionate About Problem-Solving & Tech Innovation</h1>
     <p>Enthusiastic and dedicated Computer Science student at TU Eindhoven with a strong drive for continuous learning and collaboration.</p>
@@ -301,7 +252,7 @@
 
   <section id="about">
     <h2>About Me</h2>
-    <div class="about-me">
+    <div>
       <p>I am Arav Madan, a Computer Science and Engineering student at TU Eindhoven. Known for exceptional communication skills and the ability to collaborate effectively in team environments, I am passionate about solving complex problems through technology.</p>
       <p><strong>Core Attributes:</strong> Analytical Thinker, Adaptable, Tech Enthusiast</p>
       <p><strong>Hobbies:</strong> Volunteering, Learning New Programming Languages, Mathematics Puzzles, Coding Projects</p>
@@ -333,66 +284,36 @@
         <p>Taught logical problem-solving techniques, helping students explore multiple approaches to complex mathematical problems.</p>
         <p>Tracked student progress and performance using Notion, organizing insights to tailor future lessons effectively.</p>
       </div>
-      <div class="experience-card">
-        <h3>Delivery Driver – Peddler</h3>
-        <p><strong>January 2024 – May 2024</strong></p>
-        <p>Completed timely deliveries while optimizing routes for efficiency.</p>
-        <p>Managed secure transactions and handled payments accurately.</p>
-        <p>Provided professional and friendly service, ensuring customer satisfaction.</p>
-      </div>
-      <div class="experience-card">
-        <h3>Waiter – FoodExplore</h3>
-        <p><strong>March 2023 – May 2023</strong></p>
-        <p>Welcomed guests and provided attentive, high-quality service.</p>
-        <p>Resolved customer concerns promptly to maintain a positive atmosphere.</p>
-        <p>Coordinated with kitchen staff to ensure accurate and timely orders.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="experience-grid">
-      <div class="experience-card">
-        <h3>Sportify – Java (In Progress)</h3>
-        <p><strong>March 2025</strong></p>
-        <p>Developing a sports facility and class booking app to bridge the market gap for users seeking specific sports services.</p>
-        <p>Implementing GPS-based location tracking to help users find nearby sports facilities in real-time.</p>
-        <p>Integrating a booking system with live notifications to allow direct reservations for classes and facilities.</p>
-        <p>Building a chat feature for customer and business interactions, ensuring smooth communication within the platform.</p>
-      </div>
-      <div class="experience-card">
-        <h3>Maze Runner Game – Java (Course Project)</h3>
-        <p><strong>September 2024</strong></p>
-        <p>Designed and developed an interactive maze game with a large, explorable map and a storytelling component.</p>
-        <p>Implemented NPCs with text bubble interactions, enhancing player engagement and immersion.</p>
-        <p>Integrated an interactive map feature, allowing players to navigate complex paths effectively.</p>
-      </div>
-      <div class="experience-card">
-        <h3>Personal Web Portfolio – HTML (Self-Initiated)</h3>
-        <p><strong>January 2025</strong></p>
-        <p>Built a personal web portfolio from scratch to showcase projects, skills, and experience.</p>
-        <p>Designed and structured the website layout, ensuring a clean, responsive, and professional presentation.</p>
-        <p>Received positive feedback on design and usability, enhancing personal branding.</p>
-      </div>
     </div>
   </section>
 
   <section id="skills">
     <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-item">Java</div>
-      <div class="skill-item">Python</div>
-      <div class="skill-item">HTML</div>
-      <div class="skill-item">SQL</div>
-      <div class="skill-item">Kotlin</div>
-      <div class="skill-item">VS Code</div>
-      <div class="skill-item">Android Studio</div>
-      <div class="skill-item">Analytical Thinking</div>
-      <div class="skill-item">Communication</div>
-      <div class="skill-item">Team Collaboration</div>
-      <div class="skill-item">Problem Solving</div>
-      <div class="skill-item">Process Optimization</div>
+    <div class="tree-diagram">
+      <div class="tree-node">
+        <h3>Java</h3>
+        <p>Used in developing desktop applications and algorithms. Enhanced problem-solving skills.</p>
+      </div>
+      <div class="tree-node">
+        <h3>Python</h3>
+        <p>Applied in scripting, automation, and data analysis tasks. Improved efficiency in workflows.</p>
+      </div>
+      <div class="tree-node">
+        <h3>HTML/CSS</h3>
+        <p>Utilized in building responsive web interfaces. Strengthened front-end development skills.</p>
+      </div>
+      <div class="tree-node">
+        <h3>SQL</h3>
+        <p>Used for database management and querying. Enabled efficient data retrieval and manipulation.</p>
+      </div>
+      <div class="tree-node">
+        <h3>Kotlin</h3>
+        <p>Explored Android app development. Gained hands-on experience with mobile technologies.</p>
+      </div>
+      <div class="tree-node">
+        <h3>Analytical Thinking</h3>
+        <p>Applied in problem-solving scenarios. Helped break down complex issues into manageable steps.</p>
+      </div>
     </div>
   </section>
 
@@ -432,30 +353,28 @@
 
   <div class="back-to-top" onclick="scrollToTop()">↑ Back to Top</div>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      AOS.init({
-        duration: 1000,
-        once: true,
-      });
-    });
-
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-    }
-
-    window.addEventListener('load', () => {
-      const loader = document.querySelector('.loader');
-      loader.classList.add('hidden');
-    });
-
-    // Function to show a specific section and hide others
+    // Page Transition Animations
     function showSection(sectionId) {
       const sections = document.querySelectorAll('section');
-      sections.forEach(section => section.classList.remove('active'));
-      document.getElementById(sectionId).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when switching sections
+      sections.forEach(section => {
+        section.classList.remove('active');
+        section.style.opacity = 0;
+        section.style.transform = 'translateY(20px)';
+      });
+
+      setTimeout(() => {
+        document.getElementById(sectionId).classList.add('active');
+        document.getElementById(sectionId).style.opacity = 1;
+        document.getElementById(sectionId).style.transform = 'translateY(0)';
+      }, 300); // Delay for smooth fade-out effect
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Dark Mode Toggle
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
     }
 
     // Back to Top Button
