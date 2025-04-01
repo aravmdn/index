@@ -19,14 +19,14 @@
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            background: #f5f5f5;
-            color: #333;
-            transition: background 0.3s, color 0.3s;
+            background: #f5f1e9; /* Light beige */
+            color: #4a3f35; /* Dark brown */
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
         body.dark {
-            background: #1a1a1a;
-            color: #e0e0e0;
+            background: #2b2e2a; /* Dark forest green-gray */
+            color: #d9d2c5; /* Light beige for text */
         }
 
         /* Navigation Bar */
@@ -36,35 +36,35 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem 3rem;
+            background: rgba(245, 241, 233, 0.95); /* Light beige with transparency */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
 
         body.dark .navbar {
-            background: rgba(30, 30, 30, 0.9);
+            background: rgba(43, 46, 42, 0.95); /* Darker earthy tone */
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: #4a3f35;
             font-weight: 600;
             transition: color 0.3s ease;
         }
 
         body.dark .nav-links a {
-            color: #e0e0e0;
+            color: #d9d2c5;
         }
 
         .nav-links a:hover {
-            color: #007aff;
+            color: #8a9a5b; /* Olive green */
         }
 
         .theme-toggle button {
@@ -72,18 +72,29 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle button:hover {
+            transform: rotate(20deg);
         }
 
         /* Section Styles */
         .section {
-            padding: 4rem 2rem;
-            scroll-behavior: smooth;
+            padding: 5rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         h2 {
             font-size: 2.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             text-align: center;
+            color: #6b705c; /* Muted green */
+        }
+
+        body.dark h2 {
+            color: #b8c096; /* Lighter earthy green */
         }
 
         /* Hero Section */
@@ -93,42 +104,44 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(135deg, #007aff, #00d4ff);
-            color: white;
+            background: linear-gradient(135deg, #8a9a5b, #d9b08c); /* Olive green to warm beige */
+            color: #fff;
         }
 
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             margin-bottom: 2rem;
             object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
 
         .dynamic-headline {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            animation: fadeInUp 1s ease-out;
+            animation: slideIn 1.2s ease-out;
         }
 
         .bio {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 1rem auto;
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 1.5rem auto;
         }
 
         .cta-buttons .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2.5rem;
             margin: 0.5rem;
-            border-radius: 25px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: transform 0.3s ease, background 0.3s ease;
         }
 
         .btn {
-            background: #007aff;
+            background: #6b705c; /* Muted green */
             color: white;
         }
 
@@ -138,105 +151,119 @@
         }
 
         .btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            background: #8a9a5b; /* Olive green */
         }
 
         /* Timeline */
         .timeline {
-            max-width: 800px;
+            display: grid;
+            gap: 2rem;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .timeline-item {
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            padding: 1.5rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         body.dark .timeline-item {
-            background: #2a2a2a;
+            background: #3a3e38; /* Darker earthy tone */
         }
 
         .timeline-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         /* Project Cards */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .project-card {
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         body.dark .project-card {
-            background: #2a2a2a;
+            background: #3a3e38;
         }
 
         .project-card:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         /* Skills */
         .skills-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .skill {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 200px;
+            width: 100%;
             margin-bottom: 1rem;
         }
 
         .progress-bar {
-            height: 8px;
-            background: #007aff;
-            border-radius: 4px;
-            animation: grow 1s ease-out;
+            height: 10px;
+            background: #8a9a5b; /* Olive green */
+            border-radius: 5px;
+            animation: grow 1.5s ease-out;
         }
 
         /* Contact Form */
         .contact-form {
-            max-width: 500px;
-            margin: 0 auto 2rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
         }
 
         .contact-form input, .contact-form textarea {
             width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #d9b08c; /* Warm beige */
+            border-radius: 8px;
+            background: #fff;
+            transition: border-color 0.3s ease;
         }
 
         body.dark .contact-form input, body.dark .contact-form textarea {
-            background: #2a2a2a;
-            border-color: #444;
-            color: #e0e0e0;
+            background: #3a3e38;
+            border-color: #6b705c;
+            color: #d9d2c5;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #8a9a5b;
+            outline: none;
         }
 
         .contact-details {
             text-align: center;
         }
 
-        /* Animations (Apple-inspired) */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+        /* Animations */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -245,20 +272,33 @@
             to { width: inherit; }
         }
 
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            60% { opacity: 1; transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
         .section > * {
-            animation: fadeInUp 0.8s ease-out;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .timeline-item, .project-card {
+            animation: bounceIn 0.6s ease-out;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* Add a hamburger menu in JS for mobile if desired */
+                display: none; /* Add hamburger menu in JS if desired */
             }
             .hero {
-                padding: 2rem;
+                padding: 3rem;
             }
             .dynamic-headline {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+            .section {
+                padding: 3rem 1.5rem;
             }
         }
     </style>
@@ -319,35 +359,44 @@
         <h2>Experience</h2>
         <div class="timeline">
             <div class="timeline-item">
+                <h3>Sales Associate, Nelson Schoenen B.V.</h3>
+                <p>February 2025 – Present</p>
+                <ul>
+                    <li>Guided customers in selecting footwear through personalized service.</li>
+                    <li>Managed inventory, restocking, and store organization.</li>
+                    <li>Processed transactions ensuring a smooth shopping experience.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
                 <h3>Sales Assistant, Stradivarius</h3>
                 <p>June 2024 – August 2024</p>
                 <ul>
-                    <li>Managed inventory and optimized store layout for efficiency.</li>
-                    <li>Provided personalized customer recommendations to enhance shopping experiences.</li>
+                    <li>Assisted customers with product selection, enhancing the shopping experience.</li>
+                    <li>Maintained organized and visually appealing merchandise displays.</li>
                 </ul>
             </div>
             <div class="timeline-item">
                 <h3>Mathematics Tutor, Freelance</h3>
                 <p>February 2024 – April 2024</p>
                 <ul>
-                    <li>Developed tailored lesson plans to improve student performance.</li>
-                    <li>Taught logical problem-solving techniques using interactive tools.</li>
+                    <li>Delivered personalized lessons tailored to individual learning needs.</li>
+                    <li>Encouraged critical thinking and problem-solving in mathematics.</li>
                 </ul>
             </div>
             <div class="timeline-item">
                 <h3>Delivery Driver, Peddler</h3>
                 <p>January 2024 – May 2024</p>
                 <ul>
-                    <li>Optimized delivery routes for efficiency and timeliness.</li>
-                    <li>Ensured customer satisfaction with professional service.</li>
+                    <li>Completed timely deliveries while optimizing routes for efficiency.</li>
+                    <li>Provided professional and friendly service, ensuring customer satisfaction.</li>
                 </ul>
             </div>
             <div class="timeline-item">
                 <h3>Waiter, FoodExplore</h3>
                 <p>March 2023 – May 2023</p>
                 <ul>
-                    <li>Provided high-quality service and resolved customer concerns.</li>
-                    <li>Coordinated with kitchen staff for seamless order delivery.</li>
+                    <li>Welcomed guests and provided attentive, high-quality service.</li>
+                    <li>Coordinated with kitchen staff to ensure accurate and timely orders.</li>
                 </ul>
             </div>
         </div>
