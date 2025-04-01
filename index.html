@@ -1,273 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Arav Madan, a Computer Science student at TU Eindhoven.">
-  <title>Arav Madan - Portfolio</title>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #000;
-      --secondary: #fff;
-      --accent: #ff6b6b;
-      --bg: #f5f5f5;
-      --font: 'Segoe UI', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Arav Madan, a Computer Science student at TU Eindhoven passionate about tech innovation and problem-solving.">
+    <meta name="keywords" content="Arav Madan, Computer Science, TU Eindhoven, Portfolio, Programming, Java, Python">
+    <meta name="author" content="Arav Madan">
+    <title>Arav Madan | Computer Science Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      margin: 0;
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--primary);
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+            color: #333;
+            transition: background 0.3s, color 0.3s;
+        }
 
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 2rem;
-      background: var(--bg);
-      z-index: 999;
-      transition: transform 0.3s;
-    }
+        body.dark {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
+        /* Navigation Bar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
 
-    nav a {
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: bold;
-      transition: color 0.3s;
-    }
+        body.dark .navbar {
+            background: rgba(30, 30, 30, 0.9);
+        }
 
-    nav a:hover {
-      color: var(--accent);
-    }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #000, #2a2a40);
-      color: var(--secondary);
-      text-align: center;
-      padding: 4rem;
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
+        body.dark .nav-links a {
+            color: #e0e0e0;
+        }
 
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
+        .nav-links a:hover {
+            color: #007aff;
+        }
 
-    .btn {
-      padding: 1rem 2rem;
-      border-radius: 5px;
-      transition: all 0.3s;
-    }
+        .theme-toggle button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-    .btn-primary {
-      background: var(--accent);
-      color: var(--secondary);
-    }
+        /* Section Styles */
+        .section {
+            padding: 4rem 2rem;
+            scroll-behavior: smooth;
+        }
 
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid var(--accent);
-      color: var(--accent);
-    }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
 
-    .btn:hover {
-      transform: translateY(-5px);
-    }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #007aff, #00d4ff);
+            color: white;
+        }
 
-    section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 2rem;
+            object-fit: cover;
+        }
 
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
+        .dynamic-headline {
+            font-size: 2.5rem;
+            font-weight: 700;
+            animation: fadeInUp 1s ease-out;
+        }
 
-    .experience-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
+        .bio {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 1rem auto;
+        }
 
-    .card {
-      background: var(--bg);
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
+        .cta-buttons .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            margin: 0.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
 
-    .card:hover {
-      transform: translateY(-10px);
-    }
+        .btn {
+            background: #007aff;
+            color: white;
+        }
 
-    .skill-mindmap {
-      height: 500px;
-      width: 100%;
-      margin-top: 2rem;
-      position: relative;
-    }
+        .btn.secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
 
-    .skill-node {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: var(--bg);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
+        .btn:hover {
+            transform: translateY(-3px);
+        }
 
-    .skill-node:hover {
-      transform: scale(1.1);
-    }
+        /* Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .connection-line {
-      position: absolute;
-      width: 2px;
-      background: var(--accent);
-      opacity: 0.5;
-    }
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
 
-    footer {
-      padding: 2rem;
-      text-align: center;
-      background: var(--primary);
-      color: var(--secondary);
-      position: sticky;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
+        body.dark .timeline-item {
+            background: #2a2a2a;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Project Cards */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        body.dark .project-card {
+            background: #2a2a2a;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .skill {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 200px;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #007aff;
+            border-radius: 4px;
+            animation: grow 1s ease-out;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        body.dark .contact-form input, body.dark .contact-form textarea {
+            background: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .contact-details {
+            text-align: center;
+        }
+
+        /* Animations (Apple-inspired) */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes grow {
+            from { width: 0; }
+            to { width: inherit; }
+        }
+
+        .section > * {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Add a hamburger menu in JS for mobile if desired */
+            }
+            .hero {
+                padding: 2rem;
+            }
+            .dynamic-headline {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <!-- Navigation Bar -->
+    <nav class="navbar sticky">
+        <div class="logo">Arav Madan</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="theme-toggle">
+            <button id="theme-btn" aria-label="Toggle Dark/Light Mode">🌙</button>
+        </div>
     </nav>
-  </header>
 
-  <section id="home" class="hero">
-    <img src="pfp.jpg" alt="Profile Picture" style="border-radius: 50%; width: 150px; margin-bottom: 2rem;">
-    <h1>Arav Madan</h1>
-    <p>Aspiring Computer Scientist | Passionate About Problem-Solving & Tech Innovation</p>
-    <div class="cta-buttons">
-      <a href="resume.pdf" download class="btn btn-primary">View Resume</a>
-      <a href="#contact" class="btn btn-secondary">Let's Connect</a>
-    </div>
-  </section>
+    <!-- Home Section -->
+    <section id="home" class="section hero">
+        <div class="hero-content">
+            <img src="assets/profile.jpg" alt="Arav Madan Profile Picture" class="profile-img" loading="lazy">
+            <h1 class="dynamic-headline">Aspiring Computer Scientist | Passionate About Problem-Solving & Tech Innovation</h1>
+            <p class="bio">Hi, I’m Arav—a dedicated Computer Science student at TU Eindhoven with a drive to create impactful solutions through code. I thrive on collaboration, creativity, and continuous learning.</p>
+            <div class="cta-buttons">
+                <a href="assets/resume.pdf" download class="btn">View My Resume</a>
+                <a href="#contact" class="btn secondary">Let's Connect</a>
+            </div>
+        </div>
+    </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I'm a Computer Science student at TU Eindhoven with a passion for solving complex problems through technology. Known for my analytical thinking, adaptability, and strong communication skills.</p>
-    <p>Hobbies: Volunteering, learning new programming languages, mathematics puzzles, and coding projects.</p>
-  </section>
+    <!-- About Me Section -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>I’m an enthusiastic student pursuing a BSc in Computer Science and Engineering at TU Eindhoven. With a knack for analytical thinking and a passion for tech, I’m always exploring new ways to solve problems and build innovative solutions.</p>
+        <div class="attributes">
+            <span>Analytical Thinker</span>
+            <span>Adaptable</span>
+            <span>Tech Enthusiast</span>
+            <span>Team Collaborator</span>
+        </div>
+        <h3>Hobbies & Interests</h3>
+        <ul class="hobbies">
+            <li>Volunteering</li>
+            <li>Learning New Programming Languages</li>
+            <li>Mathematics Puzzles</li>
+            <li>Coding Projects</li>
+        </ul>
+        <p class="fun-fact">Fun Fact: I once solved a Rubik’s Cube in under 2 minutes while debugging code!</p>
+    </section>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="experience-grid">
-      <div class="card">
-        <h3>Sales Associate – Nelson Schoenen B.V.</h3>
-        <p>February 2025 – Present</p>
-        <p>Guided customers in selecting footwear, managed inventory, and processed transactions.</p>
-      </div>
-      <div class="card">
-        <h3>Sales Assistant – Stradivarius</h3>
-        <p>June 2024 – August 2024</p>
-        <p>Assisted customers, maintained displays, and supported sales targets.</p>
-      </div>
-      <!-- Add other experience cards here -->
-    </div>
-  </section>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Sales Assistant, Stradivarius</h3>
+                <p>June 2024 – August 2024</p>
+                <ul>
+                    <li>Managed inventory and optimized store layout for efficiency.</li>
+                    <li>Provided personalized customer recommendations to enhance shopping experiences.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Mathematics Tutor, Freelance</h3>
+                <p>February 2024 – April 2024</p>
+                <ul>
+                    <li>Developed tailored lesson plans to improve student performance.</li>
+                    <li>Taught logical problem-solving techniques using interactive tools.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Delivery Driver, Peddler</h3>
+                <p>January 2024 – May 2024</p>
+                <ul>
+                    <li>Optimized delivery routes for efficiency and timeliness.</li>
+                    <li>Ensured customer satisfaction with professional service.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Waiter, FoodExplore</h3>
+                <p>March 2023 – May 2023</p>
+                <ul>
+                    <li>Provided high-quality service and resolved customer concerns.</li>
+                    <li>Coordinated with kitchen staff for seamless order delivery.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="card">
-        <h3>Sportify – Java (In Progress)</h3>
-        <p>Developing a sports booking app with GPS tracking and chat features.</p>
-      </div>
-      <!-- Add other project cards here -->
-    </div>
-  </section>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Sportify (In Progress)</h3>
+                <p>A sports facility booking app with GPS tracking and live notifications.</p>
+                <p><strong>Tech:</strong> Java, Kotlin</p>
+            </div>
+            <div class="project-card">
+                <h3>Maze Runner Game</h3>
+                <p>An interactive maze game with NPCs and storytelling elements.</p>
+                <p><strong>Tech:</strong> Java</p>
+            </div>
+            <div class="project-card">
+                <h3>Personal Web Portfolio</h3>
+                <p>A responsive portfolio site showcasing my skills and projects.</p>
+                <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+            </div>
+        </div>
+        <a href="https://github.com/aravmdn" target="_blank" class="btn secondary">View More on GitHub</a>
+    </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skill-mindmap">
-      <!-- Mindmap nodes and connections go here -->
-      <div class="skill-node" style="top: 20%; left: 50%;">
-        <h4>Java</h4>
-        <p>Desktop apps and algorithms</p>
-      </div>
-      <div class="connection-line" style="top: 25%; left: 50%; height: 200px;"></div>
-      <!-- Add more nodes and connections -->
-    </div>
-  </section>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Technical Skills</h3>
+                <div class="skill"><span>Python</span><div class="progress-bar" style="width: 80%;"></div></div>
+                <div class="skill"><span>Java</span><div class="progress-bar" style="width: 75%;"></div></div>
+                <div class="skill"><span>HTML</span><div class="progress-bar" style="width: 70%;"></div></div>
+                <div class="skill"><span>SQL</span><div class="progress-bar" style="width: 60%;"></div></div>
+                <div class="skill"><span>Kotlin</span><div class="progress-bar" style="width: 50%;"></div></div>
+            </div>
+            <div class="skill-category">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li>Analytical Thinking</li>
+                    <li>Communication</li>
+                    <li>Team Collaboration</li>
+                    <li>Problem-Solving</li>
+                    <li>Process Optimization</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <ul>
+                    <li>English (Fluent)</li>
+                    <li>Hindi (Fluent)</li>
+                    <li>Dutch (Intermediate)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <form>
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <p>+31 684457634</p>
-    <p>arav.madan2205@gmail.com</p>
-    <p>73 Tongelresestraat, 5613 DB Noord-Brabant, Netherlands</p>
-  </section>
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <h2>Education</h2>
+        <div class="education-item">
+            <h3>BSc in Computer Science & Engineering</h3>
+            <p>Technical University Eindhoven, Netherlands</p>
+            <p>September 2024 – Present</p>
+        </div>
+        <div class="education-item">
+            <h3>International Baccalaureate</h3>
+            <p>International School Utrecht, Netherlands</p>
+            <p>2022 – 2024</p>
+        </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2023 Arav Madan. All rights reserved.</p>
-  </footer>
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <form class="contact-form">
+            <input type="text" name="name" placeholder="Name" required aria-label="Your Name">
+            <input type="email" name="email" placeholder="Email" required aria-label="Your Email">
+            <textarea name="message" placeholder="Message" required aria-label="Your Message"></textarea>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        <div class="contact-details">
+            <p><strong>Phone:</strong> +31 684457634</p>
+            <p><strong>Email:</strong> <a href="mailto:arav.madan2205@gmail.com">arav.madan2205@gmail.com</a></p>
+            <p><strong>Address:</strong> 73 Tongelresestraat, 5613 DB, Noord-Brabant, Netherlands</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/arav-madan-a51937334" target="_blank">LinkedIn</a>
+                <a href="https://github.com/aravmdn" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script>
-    gsap.from('.hero', { duration: 1, y: -50, opacity: 0 });
-    document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(e.target.getAttribute('href'));
-        gsap.to(window, { duration: 1, scrollTo: target.offsetTop });
-      });
-    });
-  </script>
+    <footer>
+        <p>© 2025 Arav Madan. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeBtn = document.getElementById('theme-btn');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            themeBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Contact Form Submission (Placeholder)
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Form submitted! (This is a placeholder—connect to a backend for full functionality.)');
+        });
+    </script>
 </body>
 </html>
