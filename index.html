@@ -3,231 +3,170 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Arav Madan, a Computer Science and Engineering student at TU Eindhoven. Passionate about problem-solving, tech innovation, and continuous learning.">
-  <meta name="author" content="Arav Madan">
-  <meta name="keywords" content="Arav Madan, Portfolio, Computer Science, TU Eindhoven, Programming, Java, Python">
+  <meta name="description" content="Portfolio of Arav Madan, a Computer Science student at TU Eindhoven.">
   <title>Arav Madan - Portfolio</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #000000;
-      --secondary-color: #ffffff;
-      --accent-color: #ff6f61;
-      --text-color-light: #ffffff;
-      --text-color-dark: #000000;
-      --bg-light: #ffffff;
-      --bg-dark: #121212;
-      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --primary: #000;
+      --secondary: #fff;
+      --accent: #ff6b6b;
+      --bg: #f5f5f5;
+      --font: 'Segoe UI', sans-serif;
     }
 
     body {
       margin: 0;
-      font-family: var(--font-family);
-      background: var(--bg-light);
-      color: var(--text-color-dark);
-      transition: background 0.3s, color 0.3s;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    body.dark-mode {
-      background: var(--bg-dark);
-      color: var(--text-color-light);
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--primary);
+      overflow-x: hidden;
     }
 
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
-      background: var(--primary-color);
-      color: var(--text-color-light);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
+      left: 0;
+      width: 100%;
+      padding: 2rem;
+      background: var(--bg);
+      z-index: 999;
+      transition: transform 0.3s;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
     nav a {
       text-decoration: none;
-      color: var(--text-color-light);
+      color: var(--primary);
       font-weight: bold;
       transition: color 0.3s;
     }
 
     nav a:hover {
-      color: var(--accent-color);
-    }
-
-    .theme-toggle {
-      cursor: pointer;
-      font-size: 1.2rem;
-      color: var(--accent-color);
+      color: var(--accent);
     }
 
     .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #000, #2a2a40);
+      color: var(--secondary);
       text-align: center;
-      padding: 4rem 1rem;
-      background: linear-gradient(135deg, #000000, #2a2a40);
-      color: var(--text-color-light);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+      padding: 4rem;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
 
     .cta-buttons {
       display: flex;
-      justify-content: center;
       gap: 1rem;
+      margin-top: 2rem;
     }
 
-    .cta-buttons a {
-      padding: 0.7rem 1.5rem;
+    .btn {
+      padding: 1rem 2rem;
       border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s, transform 0.3s;
+      transition: all 0.3s;
     }
 
-    .cta-buttons a.primary {
-      background: var(--accent-color);
-      color: var(--primary-color);
+    .btn-primary {
+      background: var(--accent);
+      color: var(--secondary);
     }
 
-    .cta-buttons a.secondary {
+    .btn-secondary {
       background: transparent;
-      border: 2px solid var(--accent-color);
-      color: var(--accent-color);
+      border: 2px solid var(--accent);
+      color: var(--accent);
     }
 
-    .cta-buttons a:hover {
-      transform: scale(1.05);
+    .btn:hover {
+      transform: translateY(-5px);
     }
 
     section {
-      padding: 2rem 1rem;
+      padding: 4rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    section.active {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     h2 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
       text-align: center;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--bg);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .skill-mindmap {
+      height: 500px;
+      width: 100%;
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .skill-node {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: var(--bg);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .skill-node:hover {
+      transform: scale(1.1);
+    }
+
+    .connection-line {
+      position: absolute;
+      width: 2px;
+      background: var(--accent);
+      opacity: 0.5;
     }
 
     footer {
+      padding: 2rem;
       text-align: center;
-      padding: 1rem 0;
-      background: var(--primary-color);
-      color: var(--text-color-light);
-      margin-top: auto;
-    }
-
-    /* Tree Diagram for Skills */
-    .tree-diagram {
-      position: relative;
-      margin: 2rem 0;
-    }
-
-    .tree-node {
-      background: var(--primary-color);
-      color: var(--text-color-light);
-      padding: 1.5rem;
-      border-radius: 8px;
-      position: relative;
-      transition: transform 0.3s;
-      margin: 1rem 0;
-    }
-
-    .tree-node::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      width: 2px;
-      height: 10px;
-      background: var(--accent-color);
-    }
-
-    .tree-node h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .tree-node p {
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-
-    /* Branch Lines */
-    .tree-node:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      width: 2px;
-      height: 20px;
-      background: var(--accent-color);
-    }
-
-    /* Back to Top Button */
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--accent-color);
-      color: var(--primary-color);
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      display: none;
-      z-index: 1000;
-    }
-
-    .back-to-top.show {
-      display: block;
+      background: var(--primary);
+      color: var(--secondary);
+      position: sticky;
+      bottom: 0;
+      width: 100%;
     }
   </style>
 </head>
@@ -235,148 +174,70 @@
   <header>
     <nav>
       <ul>
-        <li><a href="#" onclick="showSection('home')">Home</a></li>
-        <li><a href="#" onclick="showSection('about')">About Me</a></li>
-        <li><a href="#" onclick="showSection('experience')">Experience</a></li>
-        <li><a href="#" onclick="showSection('projects')">Projects</a></li>
-        <li><a href="#" onclick="showSection('skills')">Skills</a></li>
-        <li><a href="#" onclick="showSection('education')">Education</a></li>
-        <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
   </header>
 
-  <section id="home" class="hero active">
-    <img src="pfp.jpg" alt="Profile Picture">
-    <h1>Aspiring Computer Scientist | Passionate About Problem-Solving & Tech Innovation</h1>
-    <p>Enthusiastic and dedicated Computer Science student at TU Eindhoven with a strong drive for continuous learning and collaboration.</p>
+  <section id="home" class="hero">
+    <img src="pfp.jpg" alt="Profile Picture" style="border-radius: 50%; width: 150px; margin-bottom: 2rem;">
+    <h1>Arav Madan</h1>
+    <p>Aspiring Computer Scientist | Passionate About Problem-Solving & Tech Innovation</p>
     <div class="cta-buttons">
-      <a href="resume.pdf" download class="primary">View My Resume</a>
-      <a href="#" onclick="showSection('contact')" class="secondary">Let's Connect</a>
+      <a href="resume.pdf" download class="btn btn-primary">View Resume</a>
+      <a href="#contact" class="btn btn-secondary">Let's Connect</a>
     </div>
   </section>
 
   <section id="about">
     <h2>About Me</h2>
-    <div>
-      <p>I am Arav Madan, a Computer Science and Engineering student at TU Eindhoven. Known for exceptional communication skills and the ability to collaborate effectively in team environments, I am passionate about solving complex problems through technology.</p>
-      <p><strong>Core Attributes:</strong> Analytical Thinker, Adaptable, Tech Enthusiast</p>
-      <p><strong>Hobbies:</strong> Volunteering, Learning New Programming Languages, Mathematics Puzzles, Coding Projects</p>
-    </div>
+    <p>I'm a Computer Science student at TU Eindhoven with a passion for solving complex problems through technology. Known for my analytical thinking, adaptability, and strong communication skills.</p>
+    <p>Hobbies: Volunteering, learning new programming languages, mathematics puzzles, and coding projects.</p>
   </section>
 
   <section id="experience">
     <h2>Experience</h2>
-    <div class="tree-diagram">
-      <div class="tree-node">
+    <div class="experience-grid">
+      <div class="card">
         <h3>Sales Associate – Nelson Schoenen B.V.</h3>
-        <p><strong>February 2025 – Present</strong></p>
-        <p>Guided customers in selecting the right footwear through personalized service.</p>
-        <p>Managed inventory, restocking, and store organization.</p>
-        <p>Processed transactions while ensuring a smooth shopping experience.</p>
+        <p>February 2025 – Present</p>
+        <p>Guided customers in selecting footwear, managed inventory, and processed transactions.</p>
       </div>
-      <div class="tree-node">
+      <div class="card">
         <h3>Sales Assistant – Stradivarius</h3>
-        <p><strong>June 2024 – August 2024</strong></p>
-        <p>Assisted customers with product selection, enhancing the shopping experience.</p>
-        <p>Maintained organized and visually appealing merchandise displays.</p>
-        <p>Supported sales targets through proactive engagement and teamwork.</p>
+        <p>June 2024 – August 2024</p>
+        <p>Assisted customers, maintained displays, and supported sales targets.</p>
       </div>
-      <div class="tree-node">
-        <h3>Mathematics Tutor</h3>
-        <p><strong>February 2024 – April 2024</strong></p>
-        <p>Delivered personalized lessons tailored to individual learning needs.</p>
-        <p>Encouraged critical thinking and problem-solving in mathematics.</p>
-        <p>Built strong relationships with students, earning positive feedback from parents.</p>
-      </div>
-      <div class="tree-node">
-        <h3>Delivery Driver – Peddler</h3>
-        <p><strong>January 2024 – May 2024</strong></p>
-        <p>Completed timely deliveries while optimizing routes for efficiency.</p>
-        <p>Managed secure transactions and handled payments accurately.</p>
-        <p>Provided professional and friendly service, ensuring customer satisfaction.</p>
-      </div>
-      <div class="tree-node">
-        <h3>Waiter – FoodExplore</h3>
-        <p><strong>March 2023 – May 2023</strong></p>
-        <p>Welcomed guests and provided attentive, high-quality service.</p>
-        <p>Resolved customer concerns promptly to maintain a positive atmosphere.</p>
-        <p>Coordinated with kitchen staff to ensure accurate and timely orders.</p>
-      </div>
+      <!-- Add other experience cards here -->
     </div>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
-    <div class="tree-diagram">
-      <div class="tree-node">
+    <div class="project-grid">
+      <div class="card">
         <h3>Sportify – Java (In Progress)</h3>
-        <p><strong>March 2025</strong></p>
-        <p>Developing a sports facility and class booking app to bridge the market gap for users seeking specific sports services.</p>
-        <p>Implementing GPS-based location tracking to help users find nearby sports facilities in real-time.</p>
-        <p>Integrating a booking system with live notifications to allow direct reservations for classes and facilities.</p>
-        <p>Building a chat feature for customer and business interactions, ensuring smooth communication within the platform.</p>
+        <p>Developing a sports booking app with GPS tracking and chat features.</p>
       </div>
-      <div class="tree-node">
-        <h3>Maze Runner Game – Java (Course Project)</h3>
-        <p><strong>September 2024</strong></p>
-        <p>Designed and developed an interactive maze game with a large, explorable map and a storytelling component.</p>
-        <p>Implemented NPCs with text bubble interactions, enhancing player engagement and immersion.</p>
-        <p>Integrated an interactive map feature, allowing players to navigate complex paths effectively.</p>
-      </div>
-      <div class="tree-node">
-        <h3>Personal Web Portfolio – HTML (Self-Initiated)</h3>
-        <p><strong>January 2025</strong></p>
-        <p>Built a personal web portfolio from scratch to showcase projects, skills, and experience.</p>
-        <p>Designed and structured the website layout, ensuring a clean, responsive, and professional presentation.</p>
-        <p>Received positive feedback on design and usability, enhancing personal branding.</p>
-      </div>
+      <!-- Add other project cards here -->
     </div>
   </section>
 
   <section id="skills">
     <h2>Skills</h2>
-    <div class="tree-diagram">
-      <div class="tree-node">
-        <h3>Java</h3>
-        <p>Used in developing desktop applications and algorithms. Enhanced problem-solving skills.</p>
+    <div class="skill-mindmap">
+      <!-- Mindmap nodes and connections go here -->
+      <div class="skill-node" style="top: 20%; left: 50%;">
+        <h4>Java</h4>
+        <p>Desktop apps and algorithms</p>
       </div>
-      <div class="tree-node">
-        <h3>Python</h3>
-        <p>Applied in scripting, automation, and data analysis tasks. Improved efficiency in workflows.</p>
-      </div>
-      <div class="tree-node">
-        <h3>HTML/CSS</h3>
-        <p>Utilized in building responsive web interfaces. Strengthened front-end development skills.</p>
-      </div>
-      <div class="tree-node">
-        <h3>SQL</h3>
-        <p>Used for database management and querying. Enabled efficient data retrieval and manipulation.</p>
-      </div>
-      <div class="tree-node">
-        <h3>Kotlin</h3>
-        <p>Explored Android app development. Gained hands-on experience with mobile technologies.</p>
-      </div>
-      <div class="tree-node">
-        <h3>Analytical Thinking</h3>
-        <p>Applied in problem-solving scenarios. Helped break down complex issues into manageable steps.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2>Education</h2>
-    <div class="tree-diagram">
-      <div class="tree-node">
-        <h3>Bachelor of Computer Science and Engineering</h3>
-        <p><strong>Eindhoven University of Technology, Netherlands</strong> | September 2024 – Current</p>
-        <p>Relevant Coursework: Programming, Discrete Structures, Computer Systems, Linear Algebra, Foundations of Data Analytics, DBL App Development</p>
-      </div>
-      <div class="tree-node">
-        <h3>International Baccalaureate</h3>
-        <p><strong>International School Utrecht, Netherlands</strong> | 2022 – 2024</p>
-      </div>
+      <div class="connection-line" style="top: 25%; left: 50%; height: 200px;"></div>
+      <!-- Add more nodes and connections -->
     </div>
   </section>
 
@@ -388,61 +249,25 @@
       <textarea placeholder="Message" rows="5" required></textarea>
       <button type="submit">Send Message</button>
     </form>
-    <p>Phone: +31 684457634</p>
-    <p>Email: arav.madan2205@gmail.com</p>
-    <p>Address: 73 Tongelresestraat, 5613 DB Noord-Brabant, Netherlands</p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/arav-madan-a51937334" target="_blank">linkedin.com/in/arav-madan-a51937334</a></p>
-    <p>GitHub: <a href="https://github.com/aravmdn" target="_blank">github.com/aravmdn</a></p>
+    <p>+31 684457634</p>
+    <p>arav.madan2205@gmail.com</p>
+    <p>73 Tongelresestraat, 5613 DB Noord-Brabant, Netherlands</p>
   </section>
 
   <footer>
     <p>&copy; 2023 Arav Madan. All rights reserved.</p>
   </footer>
 
-  <div class="back-to-top" onclick="scrollToTop()">↑ Back to Top</div>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      AOS.init({
-        duration: 1000,
-        once: true,
+    gsap.from('.hero', { duration: 1, y: -50, opacity: 0 });
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(e.target.getAttribute('href'));
+        gsap.to(window, { duration: 1, scrollTo: target.offsetTop });
       });
     });
-
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-    }
-
-    // Page Transition Animations
-    function showSection(sectionId) {
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => {
-        section.style.opacity = 0;
-        section.style.transform = 'translateY(20px)';
-      });
-
-      setTimeout(() => {
-        sections.forEach(section => section.classList.remove('active'));
-        document.getElementById(sectionId).classList.add('active');
-        document.getElementById(sectionId).style.opacity = 1;
-        document.getElementById(sectionId).style.transform = 'translateY(0)';
-      }, 500); // Match the transition duration in CSS
-    }
-
-    // Back to Top Button
-    window.addEventListener('scroll', () => {
-      const backToTop = document.querySelector('.back-to-top');
-      if (window.scrollY > 300) {
-        backToTop.classList.add('show');
-      } else {
-        backToTop.classList.remove('show');
-      }
-    });
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
   </script>
 </body>
 </html>
