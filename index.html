@@ -73,7 +73,7 @@
 
     .hero {
       text-align: center;
-      padding: 5rem 1rem;
+      padding: 4rem 1rem;
       background: linear-gradient(135deg, #000000, #2a2a40);
       color: var(--text-color-light);
       overflow: hidden;
@@ -138,7 +138,7 @@
     }
 
     section {
-      padding: 4rem 1rem;
+      padding: 2rem 1rem;
       max-width: 1200px;
       margin: 0 auto;
       opacity: 0;
@@ -167,9 +167,8 @@
 
     /* Tree Diagram for Skills */
     .tree-diagram {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      position: relative;
+      margin: 2rem 0;
     }
 
     .tree-node {
@@ -179,10 +178,7 @@
       border-radius: 8px;
       position: relative;
       transition: transform 0.3s;
-    }
-
-    .tree-node:hover {
-      transform: scale(1.05);
+      margin: 1rem 0;
     }
 
     .tree-node::before {
@@ -203,6 +199,17 @@
     .tree-node p {
       font-size: 0.9rem;
       line-height: 1.4;
+    }
+
+    /* Branch Lines */
+    .tree-node:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: var(--accent-color);
     }
 
     /* Back to Top Button */
@@ -261,28 +268,69 @@
 
   <section id="experience">
     <h2>Experience</h2>
-    <div class="experience-grid">
-      <div class="experience-card">
+    <div class="tree-diagram">
+      <div class="tree-node">
         <h3>Sales Associate – Nelson Schoenen B.V.</h3>
         <p><strong>February 2025 – Present</strong></p>
         <p>Guided customers in selecting the right footwear through personalized service.</p>
         <p>Managed inventory, restocking, and store organization.</p>
         <p>Processed transactions while ensuring a smooth shopping experience.</p>
       </div>
-      <div class="experience-card">
+      <div class="tree-node">
         <h3>Sales Assistant – Stradivarius</h3>
         <p><strong>June 2024 – August 2024</strong></p>
         <p>Assisted customers with product selection, enhancing the shopping experience.</p>
         <p>Maintained organized and visually appealing merchandise displays.</p>
         <p>Supported sales targets through proactive engagement and teamwork.</p>
       </div>
-      <div class="experience-card">
+      <div class="tree-node">
         <h3>Mathematics Tutor</h3>
         <p><strong>February 2024 – April 2024</strong></p>
-        <p>Developed structured lesson plans, quizzes, and tests to personalize learning and improve student performance.</p>
-        <p>Utilized Khan Academy to reinforce concepts and provide interactive learning experiences.</p>
-        <p>Taught logical problem-solving techniques, helping students explore multiple approaches to complex mathematical problems.</p>
-        <p>Tracked student progress and performance using Notion, organizing insights to tailor future lessons effectively.</p>
+        <p>Delivered personalized lessons tailored to individual learning needs.</p>
+        <p>Encouraged critical thinking and problem-solving in mathematics.</p>
+        <p>Built strong relationships with students, earning positive feedback from parents.</p>
+      </div>
+      <div class="tree-node">
+        <h3>Delivery Driver – Peddler</h3>
+        <p><strong>January 2024 – May 2024</strong></p>
+        <p>Completed timely deliveries while optimizing routes for efficiency.</p>
+        <p>Managed secure transactions and handled payments accurately.</p>
+        <p>Provided professional and friendly service, ensuring customer satisfaction.</p>
+      </div>
+      <div class="tree-node">
+        <h3>Waiter – FoodExplore</h3>
+        <p><strong>March 2023 – May 2023</strong></p>
+        <p>Welcomed guests and provided attentive, high-quality service.</p>
+        <p>Resolved customer concerns promptly to maintain a positive atmosphere.</p>
+        <p>Coordinated with kitchen staff to ensure accurate and timely orders.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="tree-diagram">
+      <div class="tree-node">
+        <h3>Sportify – Java (In Progress)</h3>
+        <p><strong>March 2025</strong></p>
+        <p>Developing a sports facility and class booking app to bridge the market gap for users seeking specific sports services.</p>
+        <p>Implementing GPS-based location tracking to help users find nearby sports facilities in real-time.</p>
+        <p>Integrating a booking system with live notifications to allow direct reservations for classes and facilities.</p>
+        <p>Building a chat feature for customer and business interactions, ensuring smooth communication within the platform.</p>
+      </div>
+      <div class="tree-node">
+        <h3>Maze Runner Game – Java (Course Project)</h3>
+        <p><strong>September 2024</strong></p>
+        <p>Designed and developed an interactive maze game with a large, explorable map and a storytelling component.</p>
+        <p>Implemented NPCs with text bubble interactions, enhancing player engagement and immersion.</p>
+        <p>Integrated an interactive map feature, allowing players to navigate complex paths effectively.</p>
+      </div>
+      <div class="tree-node">
+        <h3>Personal Web Portfolio – HTML (Self-Initiated)</h3>
+        <p><strong>January 2025</strong></p>
+        <p>Built a personal web portfolio from scratch to showcase projects, skills, and experience.</p>
+        <p>Designed and structured the website layout, ensuring a clean, responsive, and professional presentation.</p>
+        <p>Received positive feedback on design and usability, enhancing personal branding.</p>
       </div>
     </div>
   </section>
@@ -319,13 +367,13 @@
 
   <section id="education">
     <h2>Education</h2>
-    <div class="experience-grid">
-      <div class="experience-card">
+    <div class="tree-diagram">
+      <div class="tree-node">
         <h3>Bachelor of Computer Science and Engineering</h3>
         <p><strong>Eindhoven University of Technology, Netherlands</strong> | September 2024 – Current</p>
         <p>Relevant Coursework: Programming, Discrete Structures, Computer Systems, Linear Algebra, Foundations of Data Analytics, DBL App Development</p>
       </div>
-      <div class="experience-card">
+      <div class="tree-node">
         <h3>International Baccalaureate</h3>
         <p><strong>International School Utrecht, Netherlands</strong> | 2022 – 2024</p>
       </div>
@@ -353,28 +401,33 @@
 
   <div class="back-to-top" onclick="scrollToTop()">↑ Back to Top</div>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    });
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+
     // Page Transition Animations
     function showSection(sectionId) {
       const sections = document.querySelectorAll('section');
       sections.forEach(section => {
-        section.classList.remove('active');
         section.style.opacity = 0;
         section.style.transform = 'translateY(20px)';
       });
 
       setTimeout(() => {
+        sections.forEach(section => section.classList.remove('active'));
         document.getElementById(sectionId).classList.add('active');
         document.getElementById(sectionId).style.opacity = 1;
         document.getElementById(sectionId).style.transform = 'translateY(0)';
-      }, 300); // Delay for smooth fade-out effect
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Dark Mode Toggle
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
+      }, 500); // Match the transition duration in CSS
     }
 
     // Back to Top Button
