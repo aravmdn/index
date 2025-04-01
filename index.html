@@ -19,8 +19,8 @@
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            background: #f5f1e9; /* Light beige */
-            color: #4a3f35; /* Dark brown */
+            background: #f4e9e2; /* Pastel sand */
+            color: #5b4e47; /* Soft brown */
             transition: background 0.5s ease, color 0.5s ease;
         }
 
@@ -37,7 +37,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 3rem;
-            background: rgba(245, 241, 233, 0.95); /* Light beige with transparency */
+            background: rgba(244, 233, 226, 0.95); /* Pastel sand with transparency */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
@@ -54,7 +54,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #4a3f35;
+            color: #5b4e47;
             font-weight: 600;
             transition: color 0.3s ease;
         }
@@ -64,7 +64,7 @@
         }
 
         .nav-links a:hover {
-            color: #8a9a5b; /* Olive green */
+            color: #a8b5a2; /* Light sage */
         }
 
         .theme-toggle button {
@@ -90,7 +90,7 @@
             font-size: 2.5rem;
             margin-bottom: 2.5rem;
             text-align: center;
-            color: #6b705c; /* Muted green */
+            color: #8f9a84; /* Muted sage */
         }
 
         body.dark h2 {
@@ -104,7 +104,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(135deg, #8a9a5b, #d9b08c); /* Olive green to warm beige */
+            background: linear-gradient(135deg, #a8b5a2, #e8c7b5); /* Light sage to muted peach */
             color: #fff;
         }
 
@@ -141,7 +141,7 @@
         }
 
         .btn {
-            background: #6b705c; /* Muted green */
+            background: #8f9a84; /* Muted sage */
             color: white;
         }
 
@@ -152,7 +152,7 @@
 
         .btn:hover {
             transform: translateY(-5px);
-            background: #8a9a5b; /* Olive green */
+            background: #a8b5a2; /* Light sage */
         }
 
         /* Timeline */
@@ -206,7 +206,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        /* Skills */
+        /* Skills - Tree Mind Map */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -215,19 +215,86 @@
             margin: 0 auto;
         }
 
-        .skill {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 1rem;
+        .skill-tree {
+            position: relative;
+            padding: 1rem;
+            text-align: center;
         }
 
-        .progress-bar {
-            height: 10px;
-            background: #8a9a5b; /* Olive green */
-            border-radius: 5px;
-            animation: grow 1.5s ease-out;
+        .skill-tree h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #8f9a84;
+        }
+
+        body.dark .skill-tree h3 {
+            color: #b8c096;
+        }
+
+        .skill-tree ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-tree li {
+            margin: 0.8rem 0;
+            padding: 0.5rem;
+            background: #f9f2ed; /* Very light sand */
+            border-radius: 8px;
+            position: relative;
+        }
+
+        body.dark .skill-tree li {
+            background: #3a3e38;
+        }
+
+        .skill-tree li::before {
+            content: '';
+            position: absolute;
+            top: -0.8rem;
+            left: 50%;
+            width: 2px;
+            height: 0.8rem;
+            background: #a8b5a2; /* Light sage */
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            padding: 2rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.4s ease;
+        }
+
+        body.dark .education-item {
+            background: #3a3e38;
+        }
+
+        .education-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .education-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #8f9a84;
+        }
+
+        body.dark .education-item h3 {
+            color: #b8c096;
+        }
+
+        .education-item p {
+            font-size: 1.2rem;
         }
 
         /* Contact Form */
@@ -240,7 +307,7 @@
             width: 100%;
             padding: 1rem;
             margin-bottom: 1.2rem;
-            border: 1px solid #d9b08c; /* Warm beige */
+            border: 1px solid #e8c7b5; /* Muted peach */
             border-radius: 8px;
             background: #fff;
             transition: border-color 0.3s ease;
@@ -253,7 +320,7 @@
         }
 
         .contact-form input:focus, .contact-form textarea:focus {
-            border-color: #8a9a5b;
+            border-color: #a8b5a2;
             outline: none;
         }
 
@@ -267,11 +334,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes grow {
-            from { width: 0; }
-            to { width: inherit; }
-        }
-
         @keyframes bounceIn {
             0% { opacity: 0; transform: scale(0.9); }
             60% { opacity: 1; transform: scale(1.02); }
@@ -282,7 +344,7 @@
             animation: slideIn 0.8s ease-out;
         }
 
-        .timeline-item, .project-card {
+        .timeline-item, .project-card, .education-item {
             animation: bounceIn 0.6s ease-out;
         }
 
@@ -324,11 +386,11 @@
     <!-- Home Section -->
     <section id="home" class="section hero">
         <div class="hero-content">
-            <img src="assets/profile.jpg" alt="Arav Madan Profile Picture" class="profile-img" loading="lazy">
+            <img src="assets/pfp.jpg" alt="Arav Madan Profile Picture" class="profile-img" loading="lazy">
             <h1 class="dynamic-headline">Aspiring Computer Scientist | Passionate About Problem-Solving & Tech Innovation</h1>
             <p class="bio">Hi, I’m Arav—a dedicated Computer Science student at TU Eindhoven with a drive to create impactful solutions through code. I thrive on collaboration, creativity, and continuous learning.</p>
             <div class="cta-buttons">
-                <a href="assets/resume.pdf" download class="btn">View My Resume</a>
+                <a href="assets/Arav Madan(3).pdf" download class="btn">View My Resume</a>
                 <a href="#contact" class="btn secondary">Let's Connect</a>
             </div>
         </div>
@@ -429,13 +491,15 @@
     <section id="skills" class="section">
         <h2>Skills</h2>
         <div class="skills-container">
-            <div class="skill-category">
+            <div class="skill-tree">
                 <h3>Technical Skills</h3>
-                <div class="skill"><span>Python</span><div class="progress-bar" style="width: 80%;"></div></div>
-                <div class="skill"><span>Java</span><div class="progress-bar" style="width: 75%;"></div></div>
-                <div class="skill"><span>HTML</span><div class="progress-bar" style="width: 70%;"></div></div>
-                <div class="skill"><span>SQL</span><div class="progress-bar" style="width: 60%;"></div></div>
-                <div class="skill"><span>Kotlin</span><div class="progress-bar" style="width: 50%;"></div></div>
+                <ul>
+                    <li>Python</li>
+                    <li>Java → Maze Runner Game, Sportify</li>
+                    <li>HTML → Personal Web Portfolio</li>
+                    <li>SQL</li>
+                    <li>Kotlin → Sportify</li>
+                </ul>
             </div>
             <div class="skill-category">
                 <h3>Soft Skills</h3>
@@ -461,15 +525,17 @@
     <!-- Education Section -->
     <section id="education" class="section">
         <h2>Education</h2>
-        <div class="education-item">
-            <h3>BSc in Computer Science & Engineering</h3>
-            <p>Technical University Eindhoven, Netherlands</p>
-            <p>September 2024 – Present</p>
-        </div>
-        <div class="education-item">
-            <h3>International Baccalaureate</h3>
-            <p>International School Utrecht, Netherlands</p>
-            <p>2022 – 2024</p>
+        <div class="education-grid">
+            <div class="education-item">
+                <h3>BSc in Computer Science & Engineering</h3>
+                <p>Technical University Eindhoven, Netherlands</p>
+                <p>September 2024 – Present</p>
+            </div>
+            <div class="education-item">
+                <h3>International Baccalaureate</h3>
+                <p>International School Utrecht, Netherlands</p>
+                <p>2022 – 2024</p>
+            </div>
         </div>
     </section>
 
